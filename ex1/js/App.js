@@ -5,6 +5,7 @@ export default class App{
   constructor()
   {
     this.canvas;
+    this.margin = 80;
     this.ctx;
     this.letters = [];
     this.width = window.innerWidth;
@@ -38,9 +39,9 @@ export default class App{
     this.ctx.fillStyle = "#ffffff";
     this.ctx.fillRect(0, 0, this.width, this.height);
 
-    let rayon = 20;
-    let spaceX = this.width / x;
-    let spaceY = this.height / y;
+
+    let spaceX = (this.width - this.margin*2) / x;
+    let spaceY = (this.height - this.margin*2) / y;
 
     this.letters = [];
 
@@ -48,7 +49,7 @@ export default class App{
     for(let i=0; i < x; i++){
       for(let j=0; j < y; j++){
         const randomIndex = Math.floor(Math.random() * this.charArray.length);
-        let l = new Letter(this.ctx,(i * spaceX), (j * spaceY + rayon), this.charArray[randomIndex]);
+        let l = new Letter(this.ctx,(i * spaceX + this.margin), (j * spaceY + this.margin), this.charArray[randomIndex]);
         this.letters.push(l);
       }
     }
@@ -69,7 +70,6 @@ export default class App{
       this.mouseY = event.clientY - rect.top;
       console.log(this.mouseX,this.mouseY);
   }
-
 }
 
 

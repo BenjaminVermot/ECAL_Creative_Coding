@@ -13,7 +13,7 @@ export default class Letter{
     draw(){
         
         this.ctx.font = `${this.size}px neue-haas-grotesk-display`;
-        this.ctx.textAlign = "left";
+        this.ctx.textAlign = "center";
         this.ctx.fillText(this.char, this.posX, this.posY);
     }   
 
