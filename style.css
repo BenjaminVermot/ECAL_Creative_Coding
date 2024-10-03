@@ -1,0 +1,15 @@
+@import url("https://use.typekit.net/bfe2oph.css");
+
+@font-face {
+  font-family: "NeueHaas";
+  font-weight: 700;
+  font-style: italic;
+  src: url();
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(0, 163, 255, 1) 100%);
+}
