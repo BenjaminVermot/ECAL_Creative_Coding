@@ -1,4 +1,4 @@
-import Letter from "./Letter.js"
+import Letter from "/ex1/js/Letter.js"
 
 export default class App{
 
@@ -71,69 +71,6 @@ export default class App{
   }
 
 }
-
-
-  
-
-  // createGrid(x,y)
-  // {
-  //   let rayon = 30;
-  //   let spaceX = window.innerWidth / x;
-  //   let spaceY = window.innerHeight / y;
-
-  //   for(let i=0; i < x; i++){
-  //     for(let j=0; j < y; j++){
-  //       let l = new Letter(this.ctx,(i * spaceX), (j * spaceY + rayon), Math.random() * (50 - 10) + 10, "1", "#6355FF")
-  //       letters.push(l);
-  //     }
-  //   }
-
-  //   for(let i = 0; i < letters.length; i++)
-  //   {
-  //   letters[i].draw();
-  //   }
-
-  // }
-
-  // createGrid(x,y)
-  // {
-  //   let rayon = 30;
-  //   let spaceX = window.innerWidth / x;
-  //   let spaceY = window.innerHeight / y;
-
-  //   for(let i=0; i < x; i++){
-  //     for(let j=0; j < y; j++){
-  //       let l = new Letter(this.ctx,(i * spaceX), (j * spaceY + rayon), 20 + i + j, "1", `rgb(${i * 12}, 0, 0)`)
-  //       letters.push(l);
-  //     }
-  //   }
-
-  //   for(let i = 0; i < letters.length; i++)
-  //   {
-  //   letters[i].draw();
-  //   }
-
-  // }
-
-  //   createGrid(x,y)
-  // {
-  //   let rayon = 30;
-  //   let spaceX = window.innerWidth / x;
-  //   let spaceY = window.innerHeight / y;
-
-  //   for(let i=0; i < x; i++){
-  //     for(let j=0; j < y; j++){
-  //       let l = new Letter(this.ctx,(i * spaceX), (j * spaceY + rayon), 20 + i + j, "1", `rgb(${i * 12}, 0, 0)`)
-  //       letters.push(l);
-  //     }
-  //   }
-
-  //   for(let i = 0; i < letters.length; i++)
-  //   {
-  //   letters[i].draw();
-  //   }
-
-  // }
 
 
 

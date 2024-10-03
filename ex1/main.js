@@ -1,4 +1,4 @@
-import App from "./js/App.js"
+import App from "/ex1/js/App.js"
 
 const app = new App();
 
