@@ -36,7 +36,7 @@ export default class App{
   animate(x,y)
   {
     
-    this.ctx.fillStyle = "#ffffff";
+    this.ctx.fillStyle = "#000000";
     this.ctx.fillRect(0, 0, this.width, this.height);
 
 

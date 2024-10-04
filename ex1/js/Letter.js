@@ -4,7 +4,7 @@ export default class Letter{
         this.posX = _posX;
         this.posY = _posY;
         this.char = _char;
-        this.defaultSize = 30;
+        this.defaultSize = 50;
         this.color;
         this.distance;
         this.circleSize = 300;
@@ -26,10 +26,10 @@ export default class Letter{
 
     updateFontSize(){
       if(this.distance < this.circleSize){
-        this.ctx.font = `${this.distance / 10}px neue-haas-grotesk-display`;
+        this.ctx.font = `${this.distance / 10}px Mondwest`;
       }
       else{
-        this.ctx.font = `${this.defaultSize}px neue-haas-grotesk-display`;
+        this.ctx.font = `${this.defaultSize}px Mondwest`;
       }
     }
 
@@ -38,10 +38,14 @@ export default class Letter{
       
 
       if(this.distance < this.circleSize){
-        this.color = `#00E0FF`
+        this.color = `rgb(255,0,0)`
       }
       else{
         this.color = `#2A3FFF`
+      }
+
+      if(this.distance < this.circleSize/2){
+        this.color = `rgb(5,235,20)`
       }
 
       this.ctx.fillStyle = this.color;
