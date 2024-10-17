@@ -14,6 +14,7 @@ export default class Letter{
         
         this.ctx.font = `${this.size}px neue-haas-grotesk-display`;
         this.ctx.textAlign = "center";
+        this.ctx.textBaseline = "middle";
         this.ctx.fillText(this.char, this.posX, this.posY);
     }   
 

@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Mondwest";
+  font-weight: 700;
+  font-style: italic;
+  src: url(../font/PPMondwest-Regular.otf);
+}
+
+
+:root{
+  --margin: 24px;
+}
+
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
