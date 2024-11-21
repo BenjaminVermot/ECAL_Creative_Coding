@@ -1,9 +1,7 @@
-import Letter from "/ex1/js/Letter.js"
+import Letter from "./js/Letter.js";
 
-export default class App{
-
-  constructor()
-  {
+export default class App {
+  constructor() {
     this.canvas;
     this.margin = 80;
     this.ctx;
@@ -15,8 +13,7 @@ export default class App{
     this.mouseY;
   }
 
-  createCanvas(width, height)
-  {
+  createCanvas(width, height) {
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.canvas.width = width;
@@ -30,32 +27,35 @@ export default class App{
       this.height = window.innerHeight;
     });
 
-    this.canvas.addEventListener("mousemove", this.updateMousePosition.bind(this));
+    this.canvas.addEventListener(
+      "mousemove",
+      this.updateMousePosition.bind(this)
+    );
   }
 
-  animate(x,y)
-  {
-    
+  animate(x, y) {
     this.ctx.fillStyle = "#000000";
     this.ctx.fillRect(0, 0, this.width, this.height);
 
-
-    let spaceX = (this.width - this.margin*2) / x;
-    let spaceY = (this.height - this.margin*2) / y;
+    let spaceX = (this.width - this.margin * 2) / x;
+    let spaceY = (this.height - this.margin * 2) / y;
 
     this.letters = [];
 
-
-    for(let i=0; i < x; i++){
-      for(let j=0; j < y; j++){
+    for (let i = 0; i < x; i++) {
+      for (let j = 0; j < y; j++) {
         const randomIndex = Math.floor(Math.random() * this.charArray.length);
-        let l = new Letter(this.ctx,(i * spaceX + this.margin), (j * spaceY + this.margin), this.charArray[randomIndex]);
+        let l = new Letter(
+          this.ctx,
+          i * spaceX + this.margin,
+          j * spaceY + this.margin,
+          this.charArray[randomIndex]
+        );
         this.letters.push(l);
       }
     }
 
-    for(let i = 0; i < this.letters.length; i++)
-    {
+    for (let i = 0; i < this.letters.length; i++) {
       this.letters[i].draw();
       this.letters[i].calculateDistance(this.mouseX, this.mouseY);
       this.letters[i].updateFontSize();
@@ -65,15 +65,9 @@ export default class App{
   }
 
   updateMousePosition(event) {
-      let rect = this.canvas.getBoundingClientRect();
-      this.mouseX = event.clientX - rect.left;
-      this.mouseY = event.clientY - rect.top;
-      console.log(this.mouseX,this.mouseY);
+    let rect = this.canvas.getBoundingClientRect();
+    this.mouseX = event.clientX - rect.left;
+    this.mouseY = event.clientY - rect.top;
+    console.log(this.mouseX, this.mouseY);
   }
 }
-
-
-
-
-
-
