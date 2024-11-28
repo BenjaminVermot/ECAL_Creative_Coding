@@ -31,6 +31,7 @@ export default class ParticleSystem {
       // Add some gravity or other forces here if desired
       particle.applyForce({ x: x, y: y }); // Example: gravity
       particle.applyForceTowardsMouse(mouseX, mouseY, force); // Example: gravity
+      particle.applyRandomTurning(Math.random() * (0.2 - -0.2) + -0.2); // Example: gravity
       particle.update();
     }
   }

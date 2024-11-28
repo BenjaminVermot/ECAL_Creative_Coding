@@ -1,6 +1,10 @@
 export default class Particle {
-  constructor(x, y) {
-    // Position
+  constructor(ctx, x, y) {
+    this.ctx = ctx;
+    this.size = 4;
+    this.fadeSpeed = 0.02;
+    this.color = "blue";
+
     this.position = {
       x: x || 0,
       y: y || 0,
@@ -15,18 +19,38 @@ export default class Particle {
     // Acceleration
     this.acceleration = {
       x: 0,
-      y: 0,
+      y: 0.5,
     };
 
     // Additional properties
     this.radius = 5;
-    this.maxSpeed = 3;
+    this.maxSpeed = 30;
     this.orientation = 0; // in radians
-    this.color = "blue";
+
+    this.initialized = false;
+    this.isVisible = true;
   }
 
-  clicking() {
-    this.isClicking = true;
+  setup() {
+    if (this.initialized == false) {
+      this.draw();
+      this.initialized = true;
+      setTimeout(() => {
+        this.isVisible = false;
+      }, "5000");
+    }
+  }
+
+  draw() {
+    if (this.isVisible == true) {
+      this.ctx.fillStyle = this.color;
+      this.ctx.beginPath();
+      this.ctx.arc(this.position.x, this.position.y, this.size, 0, Math.PI * 2);
+      this.ctx.fill();
+
+      this.update();
+      this.applyForce({ x: 0, y: 0.5 });
+    }
   }
 
   // Apply force to the particle
@@ -75,70 +99,8 @@ export default class Particle {
       this.velocity.y *= -Math.sqrt(2) / 2; // Bascule de direction à 45 degrés
     }
 
-    // Calculate orientation based on velocity direction
-    if (this.velocity.x !== 0 || this.velocity.y !== 0) {
-      this.orientation = Math.atan2(this.velocity.y, this.velocity.x);
-    }
-
     // Reset acceleration
     this.acceleration.x = 0;
     this.acceleration.y = 0;
-  }
-
-  applyForceTowardsMouse(mouseX, mouseY, force) {
-    // Calculer la direction vers la souris
-    const dx = mouseX - this.position.x;
-    const dy = mouseY - this.position.y;
-
-    // Calculer la distance
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    // Normaliser le vecteur directionnel
-    const normalizedDx = dx / distance;
-    const normalizedDy = dy / distance;
-
-    // Appliquer la force dans cette direction
-    if (distance < 200) {
-      if (this.isClicking == false) {
-        this.applyForce({
-          x: normalizedDx * force,
-          y: normalizedDy * force,
-        });
-      } else {
-        this.applyForce({
-          x: normalizedDx * -force,
-          y: normalizedDy * -force,
-        });
-      }
-    }
-  }
-
-  applyRandomTurning(randomForce) {
-    this.applyForce({
-      x: randomForce,
-      y: randomForce,
-    });
-  }
-
-  // Draw the particle
-  draw(ctx) {
-    ctx.save();
-
-    // Move to particle position and rotate
-
-    // Draw particle as a triangle to show orientation
-    // ctx.beginPath();
-    ctx.font = `30px Poppins`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = this.color;
-    ctx.fillText(`DVD`, this.position.x, this.position.y);
-    // ctx.moveTo(this.radius * 2, 0);
-    ctx.closePath();
-
-    ctx.rotate(this.orientation);
-    ctx.translate(this.position.x, this.position.y);
-
-    ctx.restore();
   }
 }
